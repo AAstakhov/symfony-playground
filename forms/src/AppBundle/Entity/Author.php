@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +43,20 @@ class Author
      */
     private $lastName;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Book", mappedBy="groups")
+     */
+    private $books;
+
+    /**
+     * Author constructor.
+     */
+    public function __construct()
+    {
+        $this->books = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -123,6 +138,26 @@ class Author
     public function getLastName()
     {
         return $this->lastName;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getBooks()
+    {
+        return $this->books;
+    }
+
+    /**
+     * @param ArrayCollection $books
+     *
+     * @return $this
+     */
+    public function setBooks($books)
+    {
+        $this->books = $books;
+
+        return $this;
     }
 }
 

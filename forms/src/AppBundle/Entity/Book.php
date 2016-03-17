@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +43,20 @@ class Book
      */
     private $published;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Author", inversedBy="book")
+     */
+    private $authors;
+
+    /**
+     * Book constructor
+     */
+    public function __construct()
+    {
+        $this->authors = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -123,6 +138,26 @@ class Book
     public function getPublished()
     {
         return $this->published;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getAuthors()
+    {
+        return $this->authors;
+    }
+
+    /**
+     * @param ArrayCollection $authors
+     *
+     * @return $this
+     */
+    public function setAuthors($authors)
+    {
+        $this->authors = $authors;
+
+        return $this;
     }
 }
 
