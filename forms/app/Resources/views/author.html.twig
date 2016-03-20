@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}New author{% endblock %}
+
 {% block body %}
 <div>
+    <h1>New author</h1>
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <input type="submit" value="Save"/>

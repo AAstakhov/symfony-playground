@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Thank you!{% endblock %}
+
 {% block body %}
 
 {% for message in app.session.flashbag.get('notice') %}
