@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div>
+    {{ form_start(form) }}
+
+        {{ form_row(form.title) }}
+        {{ form_row(form.isbn) }}
+        {{ form_row(form.published) }}
+
+        {{ form_row(form.authors) }}
+        <a href="#" id="add-another-author">Add author...</a>
+
+        <input type="submit" value="Save"/>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        var authorCount = '{{ form.authors|length }}';
+
+        $(document).ready(function() {
+            $('#add-another-author').click(function(e) {
+                e.preventDefault();
+
+                var authorList = $('#book_authors');
+                var newWidget = authorList.attr('data-prototype');
+
+                newWidget = newWidget.replace(/__name__/g, authorCount);
+                authorCount++;
+
+                var newBlock = $('<div></div>').html(newWidget);
+                newBlock.appendTo(authorList);
+            });
+        })
+    </script>
+{% endblock %}

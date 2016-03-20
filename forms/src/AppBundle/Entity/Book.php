@@ -46,7 +46,7 @@ class Book
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Author", inversedBy="book")
+     * @ORM\ManyToMany(targetEntity="Author", inversedBy="books")
      */
     private $authors;
 
@@ -158,6 +158,14 @@ class Book
         $this->authors = $authors;
 
         return $this;
+    }
+
+    /**
+     * @param Author $author
+     */
+    public function addAuthor(Author $author)
+    {
+        $this->authors->add($author);
     }
 }
 

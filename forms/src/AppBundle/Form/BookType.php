@@ -2,9 +2,13 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class BookType extends AbstractType
 {
@@ -17,8 +21,18 @@ class BookType extends AbstractType
         $builder
             ->add('title')
             ->add('isbn')
-            ->add('published', 'datetime')
-            ->add('authors')
+            ->add('published', DateType::class)
+            ->add('authors', CollectionType::class, [
+                'entry_type' => EntityType::class,
+                'entry_options' => [
+                    'class' => 'AppBundle:Author',
+                    'choice_label' => 'fullName',
+                    'placeholder' => 'Choose...',
+                    'label' => false,
+                ],
+                'allow_add' => true,
+                'prototype' => true,
+            ])
         ;
     }
     

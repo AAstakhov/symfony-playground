@@ -46,7 +46,7 @@ class Author
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Book", mappedBy="groups")
+     * @ORM\ManyToMany(targetEntity="Book", mappedBy="authors")
      */
     private $books;
 
@@ -158,6 +158,11 @@ class Author
         $this->books = $books;
 
         return $this;
+    }
+
+    public function getFullName()
+    {
+        return implode(' ', [$this->firstName, $this->middleName, $this->lastName]);
     }
 }
 

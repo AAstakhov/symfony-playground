@@ -18,7 +18,6 @@ class AuthorType extends AbstractType
             ->add('firstName')
             ->add('middleName')
             ->add('lastName')
-            ->add('books')
         ;
     }
     
