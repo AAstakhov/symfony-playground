@@ -18,9 +18,11 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Book');
+        $books = $repository->findAll();
+
+        return $this->render('books.html.twig', [
+            'books' => $books,
         ]);
     }
 

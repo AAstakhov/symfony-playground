@@ -160,9 +160,20 @@ class Author
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getFullName()
     {
         return implode(' ', [$this->firstName, $this->middleName, $this->lastName]);
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getFullName();
     }
 }
 

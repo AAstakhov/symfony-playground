@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Books{% endblock %}
+
+{% block body %}
+    <h1>Books</h1>
+    <table>
+        <tr>
+            <th>Authors</th>
+            <th>Title</th>
+            <th>Published</th>
+
+        </tr>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.authors|join(', ') }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.published|date }}</td>
+
+            </tr>
+        {% endfor %}
+    </table>
+    <ul>
+        <li><a href="{{ path('new-author') }}">New author</a></li>
+        <li><a href="{{ path('new-book') }}">New book</a></li>
+    </ul>
+{% endblock %}
+
+
