@@ -9,14 +9,14 @@
             <th>Authors</th>
             <th>Title</th>
             <th>Published</th>
-
+            <th>Actions</th>
         </tr>
         {% for book in books %}
             <tr>
                 <td>{{ book.authors|join(', ') }}</td>
                 <td>{{ book.title }}</td>
                 <td>{{ book.published|date }}</td>
-
+                <td><a href="{{ path('edit-book', { 'id': book.id }) }}">edit</a></td>
             </tr>
         {% endfor %}
     </table>
