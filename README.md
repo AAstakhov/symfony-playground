@@ -5,19 +5,19 @@ Set of projects developed on top of Symfony framework to show and test different
 
 ## Install
 
-1. Install dependencies
-```
+Install dependencies
+```sh
 composer install
 ```
 
-2. Create the database and the schema for it
-```
+Create the database and the schema for it
+```sh
 php bin/console doctrine:database:create
 php bin/console doctrine:schema:create
 ```
 
-3. Run local web server
-```
+Run local web server
+```sh
 php bin/console server:start 127.0.0.1:8080
 ```
 
