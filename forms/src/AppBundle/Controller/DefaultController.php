@@ -8,8 +8,11 @@ use AppBundle\Form\Type\AuthorType;
 use AppBundle\Form\Type\BookType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration as Framework;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class DefaultController extends Controller
 {
@@ -28,6 +31,7 @@ class DefaultController extends Controller
 
     /**
      * @Framework\Route("/authors/{id}", defaults={"id" = null}, name="edit-author")
+     * @Framework\Method({"GET", "POST"})
      *
      * @param Request $request
      * @param Author $author
@@ -61,6 +65,7 @@ class DefaultController extends Controller
 
     /**
      * @Framework\Route("/books/{id}", defaults={"id" = null}, name="edit-book")
+     * @Framework\Method({"GET", "POST"})
      *
      * @param Request $request
      * @param Book $book
@@ -91,6 +96,47 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Framework\Route("/confirmations/book/{id}", name="confirm-delete-book")
+     *
+     * @param Book $book
+     *
+     * @return Response
+     */
+    public function showDeleteBookAction(Book $book)
+    {
+        $deleteForm = $this->createDeleteForm($book);
+
+        return $this->render('confirmation.html.twig',
+            ['form' => $deleteForm->createView()]);
+    }
+
+    /**
+     * @Framework\Route("/books/{id}", name="delete-book")
+     * @Framework\Method("DELETE")
+     *
+     * @param Request $request
+     * @param Book $book
+     *
+     * @return Response
+     */
+    public function deleteBookAction(Request $request, Book $book)
+    {
+        $deleteForm = $this->createDeleteForm($book);
+
+        $deleteForm->handleRequest($request);
+
+        if($deleteForm->isSubmitted() && $deleteForm->isValid()) {
+            $this->deleteEntity($book);
+
+            $this->addFlash('notice', 'Book is deleted');
+
+            return $this->redirectToRoute('show-result');
+        }
+
+        throw new BadRequestHttpException();
+    }
+
+    /**
      * @Framework\Route("/result", name="show-result")
      */
     public function showResultAction()
@@ -117,5 +163,32 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($entity);
         $em->flush();
+    }
+
+    /**
+     * @param $entity
+     */
+    protected function deleteEntity($entity)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($entity);
+        $em->flush();
+    }
+
+    /**
+     * @param Book $book
+     *
+     * @return Form
+     */
+    protected function createDeleteForm(Book $book)
+    {
+        $deleteForm = $this->createFormBuilder(['id' => $book->getId()])
+            ->setAction($this->generateUrl('delete-book', ['id' => $book->getId()]))
+            ->setMethod('DELETE')
+            //->add('id', HiddenType::class)
+            ->add('delete', SubmitType::class)
+            ->getForm();
+
+        return $deleteForm;
     }
 }

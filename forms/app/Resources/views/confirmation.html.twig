@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Delete?{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Delete book?</h1>
+        {{ form_start(form) }}
+
+            {{ form_widget(form) }}
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -16,7 +16,17 @@
                 <td>{{ book.authors|join(', ') }}</td>
                 <td>{{ book.title }}</td>
                 <td>{{ book.published|date }}</td>
-                <td><a href="{{ path('edit-book', { 'id': book.id }) }}">edit</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('edit-book', { 'id': book.id }) }}">edit...</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('confirm-delete-book', { 'id': book.id }) }}">delete...</a>
+                        </li>
+                    </ul>
+
+                </td>
             </tr>
         {% endfor %}
     </table>
