@@ -8,10 +8,10 @@ Symfony project that demonstrates how to use forms.
 + Controller that allows edit and create new entities (with ParamConverter)
  
 ## TODO
-1.1 ~~Display list of books~~
-1.2 ~~Display list of authors~~
-2. Implement delete form
-3. ~~Implement edit form~~
-4. ~~Add page titles~~
-5. Introduce validation (better with validation groups)
+1 ~~Display list of books~~
+2 ~~Display list of authors~~
+3. Implement delete form
+4. ~~Implement edit form~~
+5. ~~Add page titles~~
+6. Introduce validation (better with validation groups)
 
