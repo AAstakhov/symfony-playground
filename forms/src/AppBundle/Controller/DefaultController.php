@@ -4,8 +4,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Author;
 use AppBundle\Entity\Book;
-use AppBundle\Form\AuthorType;
-use AppBundle\Form\BookType;
+use AppBundle\Form\Type\AuthorType;
+use AppBundle\Form\Type\BookType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration as Framework;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
