@@ -3,20 +3,20 @@
 {% block title %}New book{% endblock %}
 
 {% block body %}
-<div>
-    <h1>New book</h1>
-    {{ form_start(form) }}
+    <div>
+        <h1>New book</h1>
+        {{ form_start(form) }}
 
-        {{ form_row(form.title) }}
-        {{ form_row(form.isbn) }}
-        {{ form_row(form.published) }}
+            {{ form_row(form.title) }}
+            {{ form_row(form.isbn) }}
+            {{ form_row(form.published) }}
 
-        {{ form_row(form.authors) }}
-        <a href="#" id="add-another-author">Add author...</a>
+            {{ form_row(form.authors) }}
+            <a href="#" id="add-another-author">Add author...</a>
 
-        <input type="submit" value="Save"/>
-    {{ form_end(form) }}
-</div>
+            <input type="submit" value="Save"/>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
 
 {% block javascripts %}

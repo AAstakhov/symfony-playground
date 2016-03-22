@@ -4,14 +4,11 @@
 
 {% block body %}
 
-{% for message in app.session.flashbag.get('notice') %}
-    <p>{{ message }}</p>
-{% endfor %}
+    {% for message in app.session.flashbag.get('notice') %}
+        <p>{{ message }}</p>
+    {% endfor %}
 
-<ul>
-    <li><a href="{{ path('edit-author') }}">New author</a></li>
-    <li><a href="{{ path('edit-book') }}">New book</a></li>
-</ul>
+    {% include 'parts/menu.html.twig' %}
 
 {% endblock %}
 
