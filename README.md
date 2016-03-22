@@ -1,3 +1,5 @@
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/f8f3de80-abd4-4da0-a55b-15f1bc56701c/mini.png)](https://insight.sensiolabs.com/projects/f8f3de80-abd4-4da0-a55b-15f1bc56701c)
+
 # Symfony Playground
 Set of projects developed on top of Symfony framework to show and test different features, approaches and components.
 
