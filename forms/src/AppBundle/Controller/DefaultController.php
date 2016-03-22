@@ -36,9 +36,7 @@ class DefaultController extends Controller
      */
     public function editOrCreateAuthorAction(Request $request, Author $author = null)
     {
-        if(null !== $request->get('id') && null === $author) {
-            throw $this->createNotFoundException();
-        }
+        $this->checkIfEntityExists($request, $author);
 
         if(null === $author) {
             $author = new Author();
@@ -49,9 +47,7 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($author);
-            $em->flush();
+            $this->saveEntity($author);
 
             $this->addFlash('notice', 'Author is created');
 
@@ -64,24 +60,27 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Framework\Route("/books", name="new-book")
+     * @Framework\Route("/books/{id}", defaults={"id" = null}, name="edit-book")
      *
      * @param Request $request
+     * @param Book $book
      *
      * @return Response
      */
-    public function newBookAction(Request $request)
+    public function editOrCreateBookAction(Request $request, Book $book = null)
     {
-        $book = new Book();
+        $this->checkIfEntityExists($request, $book);
+
+        if(null === $book) {
+            $book = new Book();
+        }
 
         $form = $this->createForm(BookType::class, $book);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($book);
-            $em->flush();
+            $this->saveEntity($book);
 
             $this->addFlash('notice', 'Book is created');
 
@@ -97,5 +96,26 @@ class DefaultController extends Controller
     public function showResultAction()
     {
         return $this->render('result.html.twig');
+    }
+
+    /**
+     * @param Request $request
+     * @param $entity
+     */
+    protected function checkIfEntityExists(Request $request, $entity)
+    {
+        if (null !== $request->get('id') && null === $entity) {
+            throw $this->createNotFoundException();
+        }
+    }
+
+    /**
+     * @param $entity
+     */
+    protected function saveEntity($entity)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($entity);
+        $em->flush();
     }
 }
