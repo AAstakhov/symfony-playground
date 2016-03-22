@@ -27,15 +27,23 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Framework\Route("/authors", name="new-author")
+     * @Framework\Route("/authors/{id}", defaults={"id" = null}, name="edit-author")
      *
      * @param Request $request
+     * @param Author $author
      *
      * @return Response
      */
-    public function newAuthorAction(Request $request)
+    public function editOrCreateAuthorAction(Request $request, Author $author = null)
     {
-        $author = new Author();
+        if(null !== $request->get('id') && null === $author) {
+            throw $this->createNotFoundException();
+        }
+
+        if(null === $author) {
+            $author = new Author();
+        }
+
         $form = $this->createForm(AuthorType::class, $author);
 
         $form->handleRequest($request);
