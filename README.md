@@ -23,3 +23,17 @@ Run local web server
 php bin/console server:start 127.0.0.1:8080
 ```
 
+## Planned Playground Projects
+- Forms: data transformers, form events, form type extensions
+- Security: firewalls, Guard, access control rules
+- Controller: file upload
+- Routing: Conditional request matching
+- Translations and pluralization, string interpolation, assets management
+- DI: factories, autowiring
+- Console events
+
+### Later (after certification) 
+- Expression language 
+ - not needed for certification
+ - maybe with forms
+ - see https://www.symfony.fi/entry/its-time-to-get-creative-with-the-symfony-expression-language)
