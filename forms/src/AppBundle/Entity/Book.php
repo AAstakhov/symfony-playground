@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
@@ -48,6 +49,13 @@ class Book
      * @ORM\Column(name="published", type="datetime")
      */
     private $published;
+
+    /**
+     * @var UploadedFile
+     *
+     * @Assert\File(maxSize="6000000")
+     */
+    private $coverImageFile;
 
     /**
      * @var ArrayCollection
@@ -175,6 +183,22 @@ class Book
     }
 
     /**
+     * @return UploadedFile
+     */
+    public function getCoverImageFile()
+    {
+        return $this->coverImageFile;
+    }
+
+    /**
+     * @param UploadedFile $coverImageFile
+     */
+    public function setCoverImageFile(UploadedFile $coverImageFile)
+    {
+        $this->coverImageFile = $coverImageFile;
+    }
+
+    /**
      * @return bool
      *
      * @Assert\IsTrue(
@@ -186,5 +210,18 @@ class Book
     {
         return count($this->authors) < 2;
     }
-}
 
+    /**
+     * @param string $uploadDir
+     */
+    public function upload($uploadDir)
+    {
+        if (null === $this->getCoverImageFile()) {
+            return;
+        }
+
+        $this->getCoverImageFile()->move($uploadDir, $this->getId());
+
+        $this->coverImageFile = null;
+    }
+}

@@ -37,7 +37,8 @@ class BookType extends AbstractType
                 'allow_add' => true,
                 'prototype' => true,
             ])
-            ->add('is_special_validation_enabled', CheckboxType::class, [
+            ->add('coverImageFile')
+            ->add('isSpecialValidationEnabled', CheckboxType::class, [
                 'label' => 'Enable special validation',
                 // shows that this field is not a part of the domain object
                 'mapped' => false,
@@ -55,7 +56,7 @@ class BookType extends AbstractType
             'data_class' => 'AppBundle\Entity\Book',
             'validation_groups' =>
                 function(FormInterface $form) {
-                    $isSpecialValidationEnabled = $form->get('is_special_validation_enabled')->getData();
+                    $isSpecialValidationEnabled = $form->get('isSpecialValidationEnabled')->getData();
                     return $isSpecialValidationEnabled ? ['Default', 'Special'] : ['Default'];
                 }
         ]);

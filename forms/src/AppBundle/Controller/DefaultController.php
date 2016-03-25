@@ -86,6 +86,7 @@ class DefaultController extends Controller
 
         if($form->isSubmitted() && $form->isValid()) {
             $this->saveEntity($book);
+            $book->upload($this->getParameter('kernel.root_dir').'/../web/images/books');
 
             $this->addFlash('notice', 'Book is created');
 

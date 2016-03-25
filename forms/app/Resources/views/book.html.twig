@@ -18,7 +18,10 @@
 
         <a href="#" id="add-another-author">Add author...</a>
 
-        {{ form_row(form.is_special_validation_enabled) }}
+        {{ form_row(form.coverImageFile) }}
+        {{ form_row(form.isSpecialValidationEnabled) }}
+
+        <hr/>
 
         <input type="submit" value="Save"/>
         {{ form_end(form) }}
