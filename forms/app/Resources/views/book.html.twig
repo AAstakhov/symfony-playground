@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New book{% endblock %}
+{% block title %}{{ (book.id) ? 'Edit book' : 'New book' }}{% endblock %}
 
 {% block body %}
     <div>
-        <h1>New book</h1>
+        <h1>{{ (book.id) ? 'Edit book' : 'New book' }}</h1>
         <div>
             {{ form_errors(form) }}
         </div>
@@ -19,6 +19,10 @@
         <a href="#" id="add-another-author">Add author...</a>
 
         {{ form_row(form.coverImageFile) }}
+        {% if book.id %}
+        <img src="{{ image_dir }}/{{ book.id }}"/>
+        {% endif %}
+
         {{ form_row(form.isSpecialValidationEnabled) }}
 
         <hr/>
