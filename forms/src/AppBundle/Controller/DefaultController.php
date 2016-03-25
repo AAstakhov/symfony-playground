@@ -193,7 +193,6 @@ class DefaultController extends Controller
         $deleteForm = $this->createFormBuilder(['id' => $book->getId()])
             ->setAction($this->generateUrl('delete-book', ['id' => $book->getId()]))
             ->setMethod('DELETE')
-            //->add('id', HiddenType::class)
             ->add('delete', SubmitType::class)
             ->getForm();
 
