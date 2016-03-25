@@ -4,12 +4,16 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Book
  *
  * @ORM\Table(name="book")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BookRepository")
+ *
+ * @DoctrineAssert\UniqueEntity("isbn")
  */
 class Book
 {
@@ -33,6 +37,8 @@ class Book
      * @var string
      *
      * @ORM\Column(name="isbn", type="string", length=13, unique=true)
+     *
+     * @Assert\Isbn(type="isbn10")
      */
     private $isbn;
 
@@ -166,6 +172,19 @@ class Book
     public function addAuthor(Author $author)
     {
         $this->authors->add($author);
+    }
+
+    /**
+     * @return bool
+     *
+     * @Assert\IsTrue(
+     *     message="Book must have less that 2 authors",
+     *     groups={"Special"}
+     * )
+     */
+    public function hasLessThanTwoAuthors()
+    {
+        return count($this->authors) < 2;
     }
 }
 

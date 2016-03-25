@@ -5,16 +5,22 @@
 {% block body %}
     <div>
         <h1>New book</h1>
+        <div>
+            {{ form_errors(form) }}
+        </div>
         {{ form_start(form) }}
 
-            {{ form_row(form.title) }}
-            {{ form_row(form.isbn) }}
-            {{ form_row(form.published) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.isbn) }}
+        {{ form_row(form.published) }}
 
-            {{ form_row(form.authors) }}
-            <a href="#" id="add-another-author">Add author...</a>
+        {{ form_row(form.authors) }}
 
-            <input type="submit" value="Save"/>
+        <a href="#" id="add-another-author">Add author...</a>
+
+        {{ form_row(form.is_special_validation_enabled) }}
+
+        <input type="submit" value="Save"/>
         {{ form_end(form) }}
     </div>
 {% endblock %}
