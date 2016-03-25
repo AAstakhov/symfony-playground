@@ -53,13 +53,14 @@ class DefaultController extends Controller
         if($form->isSubmitted() && $form->isValid()) {
             $this->saveEntity($author);
 
-            $this->addFlash('notice', 'Author is created');
+            $this->addFlash('notice', $author->getId() ? 'Author is updated' : 'Author is created');
 
             return $this->redirectToRoute('show-result');
         }
 
         return $this->render('author.html.twig', [
             'form' => $form->createView(),
+            'author' => $author,
         ]);
     }
 
@@ -84,16 +85,22 @@ class DefaultController extends Controller
 
         $form->handleRequest($request);
 
+        $uploadDir = $this->getParameter('kernel.root_dir') . '/../web/images/books';
+
         if($form->isSubmitted() && $form->isValid()) {
             $this->saveEntity($book);
-            $book->upload($this->getParameter('kernel.root_dir').'/../web/images/books');
+            $book->upload($uploadDir);
 
-            $this->addFlash('notice', 'Book is created');
+            $this->addFlash('notice', $book->getId() ? 'Book is updated' : 'Book is created');
 
             return $this->redirectToRoute('show-result');
         }
 
-        return $this->render('book.html.twig', ['form' => $form->createView()]);
+        return $this->render('book.html.twig', [
+            'form' => $form->createView(),
+            'book' => $book,
+            'image_dir' => '/images/books',
+        ]);
     }
 
     /**
