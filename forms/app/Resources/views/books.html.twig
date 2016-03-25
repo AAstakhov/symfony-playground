@@ -13,7 +13,11 @@
         </tr>
         {% for book in books %}
             <tr>
-                <td>{{ book.authors|join(', ') }}</td>
+                <td>
+                    {% for author in book.authors %}
+                    <a href="{{ path('edit-author', { 'id': author.id }) }}">{{ author }}</a>
+                    {% endfor %}
+                </td>
                 <td>{{ book.title }}</td>
                 <td>{{ book.published|date }}</td>
                 <td>

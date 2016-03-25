@@ -2,9 +2,11 @@
 
 namespace AppBundle\Form\Type;
 
+use AppBundle\Form\DataTransformer\YoutubeUrlToIdTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class AuthorType extends AbstractType
 {
@@ -18,7 +20,11 @@ class AuthorType extends AbstractType
             ->add('firstName')
             ->add('middleName')
             ->add('lastName')
+            ->add('youtubeId')
         ;
+
+        $builder->get('youtubeId')
+            ->addModelTransformer(new YoutubeUrlToIdTransformer());
     }
     
     /**

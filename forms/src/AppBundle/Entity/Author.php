@@ -44,6 +44,13 @@ class Author
     private $lastName;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="youtube_id", type="string", length=255)
+     */
+    private $youtubeId;
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Book", mappedBy="authors")
@@ -156,6 +163,26 @@ class Author
     public function setBooks($books)
     {
         $this->books = $books;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getYoutubeId()
+    {
+        return $this->youtubeId;
+    }
+
+    /**
+     * @param string $youtubeId
+     *
+     * @return $this
+     */
+    public function setYoutubeId($youtubeId)
+    {
+        $this->youtubeId = $youtubeId;
 
         return $this;
     }
