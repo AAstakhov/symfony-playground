@@ -8,13 +8,13 @@ security:
             memory:
                 users:
                     admin:
-                        password: admin
+                        password: %admin_password%
                         roles: 'ROLE_ADMIN'
                     member:
-                        password: member
+                        password: %member_password%
                         roles: 'ROLE_MEMBER'
                     user:
-                        password: user
+                        password: %user_password%
                         roles: 'ROLE_USER'
 
     firewalls:
