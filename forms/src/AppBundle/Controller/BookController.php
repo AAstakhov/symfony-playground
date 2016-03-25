@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
-class DefaultController extends Controller
+class BookController extends Controller
 {
     /**
      * @Framework\Route("/", name="homepage")

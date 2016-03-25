@@ -5,20 +5,35 @@ security:
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    admin:
+                        password: admin
+                        roles: 'ROLE_ADMIN'
+                    member:
+                        password: member
+                        roles: 'ROLE_MEMBER'
+                    user:
+                        password: user
+                        roles: 'ROLE_USER'
 
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
+        main:
+            # http_basic: ~
+            anonymous: ~
+            logout:
+                path:   /logout
+                target: /
+            form_login:
+                login_path: login
+                check_path: login
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/member, roles: ROLE_MEMBER }
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
