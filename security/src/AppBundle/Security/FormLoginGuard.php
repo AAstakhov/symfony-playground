@@ -12,7 +12,6 @@ use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
-use Symfony\Component\VarDumper\VarDumper;
 
 class FormLoginGuard extends AbstractFormLoginAuthenticator
 {
@@ -88,8 +87,6 @@ class FormLoginGuard extends AbstractFormLoginAuthenticator
     public function checkCredentials($credentials, UserInterface $user)
     {
         $plainPassword = $credentials['password'];
-
-        $this->logger->info('!!!! Password' . $plainPassword);
 
         if (!$this->encoder->isPasswordValid($user, $plainPassword)) {
             // throw any AuthenticationException

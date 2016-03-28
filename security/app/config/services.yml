@@ -7,3 +7,25 @@ services:
         arguments:
             - "@security.password_encoder"
             - "@logger"
+
+    app.security.random_voter1:
+        class: AppBundle\Security\Voter\RandomVoter1
+        arguments:
+            - "@logger"
+        tags:
+            - { name: security.voter }
+        public: false
+    app.security.random_voter2:
+        class: AppBundle\Security\Voter\RandomVoter2
+        arguments:
+            - "@logger"
+        tags:
+            - { name: security.voter }
+        public: false
+    app.security.random_voter3:
+        class: AppBundle\Security\Voter\RandomVoter3
+        arguments:
+            - "@logger"
+        tags:
+            - { name: security.voter }
+        public: false
