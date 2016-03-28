@@ -4,14 +4,13 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration as Framework;
-use Symfony\Component\HttpFoundation\Request;
 
 class LoginController extends Controller
 {
     /**
      * @Framework\Route("/login", name="login")
      */
-    public function loginAction(Request $request)
+    public function loginAction()
     {
         $authenticationUtils = $this->get('security.authentication_utils');
 
@@ -29,5 +28,13 @@ class LoginController extends Controller
                 'error'         => $error,
             )
         );
+    }
+
+    /**
+     * @Framework\Route("/login_check", name="login_check")
+     */
+    public function loginCheckAction()
+    {
+        //
     }
 }
