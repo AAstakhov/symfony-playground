@@ -1,9 +1,16 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
-parameters:
-#    parameter_name: value
-
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.planet.earth_government:
+        class: AppBundle\Planet\PlanetGovernment
+        factory: ["AppBundle\\Factory\\PlanetGovernmentFactory", "createPlanetGovernment"]
+        arguments:
+            - "Earth"
+    app.planet.mars_government:
+        class: AppBundle\Planet\PlanetGovernment
+        factory: ["AppBundle\\Factory\\PlanetGovernmentFactory", "createPlanetGovernment"]
+        arguments:
+            - "Mars"
+    app.planet.uranus_government:
+        class: AppBundle\Planet\PlanetGovernment
+        factory: ["AppBundle\\Factory\\PlanetGovernmentFactory", "createPlanetGovernment"]
+        arguments:
+            - "Uranus"
