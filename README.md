@@ -29,7 +29,8 @@ php bin/console server:start 127.0.0.1:8080
 - Controller: file upload
 - Routing: Conditional request matching
 - Translations and pluralization, string interpolation, assets management
-- DI: factories, autowiring, configurator(!)
+- DI: factories, autowiring, configurator(!), expressions in service config
+- Bundle configuration: ConfigurableExtension 
 - Console events
 
 ### Later (after certification) 
