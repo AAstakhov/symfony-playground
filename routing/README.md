@@ -6,4 +6,4 @@ ConditionalRequestMatchingController demonstrates how to use [Customized Route M
 
 Controller varies homepage content depending on the request user agent.
 
-Firefox users see content 'Firefox', chrome users see a string 'Chrome', all other see full User-Agent string. 
+Firefox users see content 'Firefox', chrome users see a string 'Chrome', all other see full User-Agent string.
