@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="apples">
+                <source>header.apples</source>
+                <target>Яблоки</target>
+            </trans-unit>
+            <trans-unit id="pies">
+                <source>header.pies</source>
+                <target>Пироги</target>
+            </trans-unit>
+            <trans-unit id="welcome">
+                <source>Welcome %user_name%!</source>
+                <target>Привет %user_name%!</target>
+            </trans-unit>
+            <trans-unit id="apples_transchoice">
+                <source>{0} There are no apples|{1} There is one apple|]1,Inf[ There are %count% apples</source>
+                <target>{0} Яблок нет|[1,Inf[ Яблок: %count%</target>
+            </trans-unit>
+            <trans-unit id="pies_transchoice">
+                <source>There is a pie|There are %count% pies</source>
+                <target>Это %count% пирог|Это %count% пирога|Это %count% пирогов</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

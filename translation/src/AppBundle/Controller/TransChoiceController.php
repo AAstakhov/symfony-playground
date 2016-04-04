@@ -6,16 +6,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class TransChoiceController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/{_locale}", name="homepage")
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $counts = [0, 1, 2, 3, 4, 5, 6, 11, 12, 21, 22, 25, 100];
+
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'counts' => $counts,
+            'user_name' => 'John Doe',
         ]);
     }
 }
