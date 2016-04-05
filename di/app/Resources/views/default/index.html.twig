@@ -1,12 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <h2>Governments exist on these planets:</h2>
     <div>
         {% for government in governments %}
             <div>
                 {{ government.planet.name }}
             </div>
         {% endfor %}
+    </div>
+
+    <h2>Current audit for the government on:</h2>
+    <div>
+        {{ government_audit.planetGovernment.planet.name }}
     </div>
 {% endblock %}
 
