@@ -1,4 +1,10 @@
-translation
-===========
+# Translation
 
-A Symfony project created on April 3, 2016, 9:43 pm.
+This projects demonstrates translations and pluralization.
+
+Open urls:
+* /en
+* /de
+* /ru
+to compare page translations.
+
