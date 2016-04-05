@@ -21,4 +21,3 @@ services:
         class: AppBundle\Planet\PlanetGovernmentAudit
         arguments:
             - "@=service('app.planet.'~parameter('audited_planet')~'_government')"
-

@@ -1,4 +1,5 @@
-di
-==
+# Dependency injection
 
-A Symfony project created on March 29, 2016, 12:16 am.
+Demonstrates:
+* Service factory (PlanetGovernmentFactory)
+* Using expression language for service injections (PlanetGovernmentAudit)
