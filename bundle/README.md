@@ -1,4 +1,4 @@
 # Bundle
 
 Demonstrates:
-- Bundle inheritance
+- Bundle inheritance (AppBundle overrides Acme\ParentBundle)
