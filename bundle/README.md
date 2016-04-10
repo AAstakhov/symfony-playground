@@ -1,0 +1,4 @@
+# Bundle
+
+Demonstrates:
+- Bundle inheritance

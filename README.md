@@ -31,6 +31,7 @@ php bin/console server:start 127.0.0.1:8080
 - Translations and pluralization, string interpolation, assets management
 - DI: factories, autowiring, configurator(!), expressions in service config
 - Bundle configuration: ConfigurableExtension 
+- Controllers: bundle inheritance
 - Console events
 
 ### Later (after certification) 
