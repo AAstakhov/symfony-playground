@@ -40,3 +40,4 @@ php bin/console server:start 127.0.0.1:8080
  - maybe with forms
  - see https://www.symfony.fi/entry/its-time-to-get-creative-with-the-symfony-expression-language)
 - Microframework
+- Async controllers: https://www.symfony.fi/entry/going-async-in-symfony-controllers
