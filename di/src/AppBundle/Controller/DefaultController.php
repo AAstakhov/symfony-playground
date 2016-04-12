@@ -17,10 +17,12 @@ class DefaultController extends Controller
         $uranusGovernment = $this->get('app.planet.uranus_government');
 
         $governmentAudit = $this->get('app.planet.government_audit');
+        $governmentAuditManager = $this->get('app.planet.government_audit_manager');
 
         return $this->render('default/index.html.twig', [
             'governments' => [$earthGovernment, $marsGovernment, $uranusGovernment],
             'government_audit' => $governmentAudit,
+            'government_audit_manager' => $governmentAuditManager,
         ]);
     }
 }

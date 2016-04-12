@@ -21,3 +21,6 @@ services:
         class: AppBundle\Planet\PlanetGovernmentAudit
         arguments:
             - "@=service('app.planet.'~parameter('audited_planet')~'_government')"
+    app.planet.government_audit_manager:
+        class: AppBundle\Planet\PlanetGovernmentAuditManager
+        autowire: true
