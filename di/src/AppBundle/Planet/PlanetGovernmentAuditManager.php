@@ -3,7 +3,6 @@
 namespace AppBundle\Planet;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class PlanetGovernmentAuditManager
 {
