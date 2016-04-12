@@ -15,10 +15,6 @@ class PlanetGovernmentAuditManager
      * @var EntityManagerInterface
      */
     private $entityManager;
-    /**
-     * @var EventDispatcherInterface
-     */
-    private $eventDispatcher;
 
     /**
      * Constructor.
@@ -38,5 +34,13 @@ class PlanetGovernmentAuditManager
     public function getAudit()
     {
         return $this->audit;
+    }
+
+    /**
+     * @return EntityManagerInterface
+     */
+    public function getEntityManager()
+    {
+        return $this->entityManager;
     }
 }
