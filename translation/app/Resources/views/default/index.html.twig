@@ -6,6 +6,11 @@
     Welcome %user_name%!
     {% endtrans %}
 
+    <div>{{ 'Welcome %user_name%!'|trans({'%user_name%': 'Billy'}) }}</div>
+    <div>{{ 'Welcome %user_name%!'|trans({'%user_name%': 'Billy'}, 'app') }}</div>
+
+    <div>{{ 'There is a pie|There are %count% pies'|transchoice(1, {'%user%': 'aber'},'app') }}</div>
+
     <h2>{% trans %}header.apples{% endtrans %}</h2>
     <ul>
         {% for count in counts %}
@@ -29,6 +34,9 @@
             </li>
         {% endfor %}
     </ul>
+
+
+
 
 {% endblock %}
 

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+
+            <trans-unit id="welcome">
+                <source>Welcome %user_name%!</source>
+                <target>Hahahhahah, Wilkommen %user_name%!</target>
+            </trans-unit>
+
+            <trans-unit id="pies_transchoice">
+                <source>There is a pie|There are %count% pies</source>
+                <target>Es gibt ein Kuchen, natürlich|Es gibt %count% Kuchen, %user% natürlich</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>
