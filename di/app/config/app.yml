@@ -1,0 +1,10 @@
+app:
+    some_integer: 1
+    some_text: value_from_app
+    array_elements:
+        first_from_yml:
+            integer_element: 1
+            text_element: text1 from yml
+        second_from_yml:
+            integer_element: 2
+            text_element: text2 from yml

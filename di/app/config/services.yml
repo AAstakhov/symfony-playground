@@ -1,26 +1,27 @@
-parameters:
-    audited_planet: "Earth"
+#parameters:
+#    audited_planet: "Earth"
 services:
-    app.planet.earth_government:
-        class: AppBundle\Planet\PlanetGovernment
-        factory: ["AppBundle\\Factory\\PlanetGovernmentFactory", "createPlanetGovernment"]
-        arguments:
-            - "Earth"
-    app.planet.mars_government:
-        class: AppBundle\Planet\PlanetGovernment
-        factory: ["AppBundle\\Factory\\PlanetGovernmentFactory", "createPlanetGovernment"]
-        arguments:
-            - "Mars"
-    app.planet.uranus_government:
-        class: AppBundle\Planet\PlanetGovernment
-        factory: ["AppBundle\\Factory\\PlanetGovernmentFactory", "createPlanetGovernment"]
-        arguments:
-            - "Uranus"
+#    app.planet.earth_government:
+#        class: AppBundle\Planet\PlanetGovernment
+#        factory: ["AppBundle\\Factory\\PlanetGovernmentFactory", "createPlanetGovernment"]
+#        arguments:
+#            - "Earth"
+#    app.planet.mars_government:
+#        class: AppBundle\Planet\PlanetGovernment
+#        factory: ["AppBundle\\Factory\\PlanetGovernmentFactory", "createPlanetGovernment"]
+#        arguments:
+#            - "Mars"
+#    app.planet.uranus_government:
+#        class: AppBundle\Planet\PlanetGovernment
+#        factory: ["AppBundle\\Factory\\PlanetGovernmentFactory", "createPlanetGovernment"]
+#        arguments:
+#            - "Uranus"
 
-    app.planet.government_audit:
-        class: AppBundle\Planet\PlanetGovernmentAudit
-        arguments:
-            - "@=service('app.planet.'~parameter('audited_planet')~'_government')"
-    app.planet.government_audit_manager:
-        class: AppBundle\Planet\PlanetGovernmentAuditManager
-        autowire: true
+#    app.planet.government_audit:
+#        class: AppBundle\Planet\PlanetGovernmentAudit
+#        arguments:
+#            - "@=service('app.planet.'~parameter('audited_planet')~'_government')"
+
+#    app.planet.government_audit_manager:
+#        class: AppBundle\Planet\PlanetGovernmentAuditManager
+#        autowire: true

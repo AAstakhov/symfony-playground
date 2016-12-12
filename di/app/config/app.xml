@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<sym:container xmlns:sym="http://symfony.com/schema/dic/services" xmlns="http://example.org/schema/dic/app">
+
+    <config>
+
+        <some_integer>86</some_integer>
+
+        <array_element name="first_from_xml">
+            <integer_element>3</integer_element>
+            <text_element>text1 from xml</text_element>
+        </array_element>
+        <array_element name="second_from_xml">
+            <integer_element>4</integer_element>
+            <text_element>text2 from xml</text_element>
+        </array_element>
+    </config>
+
+</sym:container>

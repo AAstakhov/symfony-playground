@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="audited_planet">Mars</parameter>
+    </parameters>
+
+    <services>
+
+        <service id="app.planet.mars_government" class="AppBundle\Planet\PlanetGovernment">
+            <factory class="AppBundle\Factory\PlanetGovernmentFactory" method="createPlanetGovernment" />
+            <argument>Mars</argument>
+        </service>
+
+        <service id="app.planet.uranus_government" class="AppBundle\Planet\PlanetGovernment">
+            <factory class="AppBundle\Factory\PlanetGovernmentFactory" method="createPlanetGovernment" />
+            <argument>Uranus</argument>
+        </service>
+
+        <service id="app.planet.earth_government" class="AppBundle\Planet\PlanetGovernment">
+            <factory class="AppBundle\Factory\PlanetGovernmentFactory" method="createPlanetGovernment" />
+            <argument>Earth</argument>
+        </service>
+
+        <service id="app.planet.government_audit" class="AppBundle\Planet\PlanetGovernmentAudit">
+            <argument type="expression">service('app.planet.'~parameter('audited_planet')~'_government')</argument>
+        </service>
+
+        <service id="app.planet.government_audit_manager" class="AppBundle\Planet\PlanetGovernmentAuditManager" autowire="true">
+
+        </service>
+
+    </services>
+</container>
