@@ -2,6 +2,16 @@
 
 {% block body %}
 
+
+    {{ 'createdAt'|humanize }}
+
+    {% set bar='xxx' %}
+
+    {{ dump() }}
+
+    {{ "foo #{bar} baz" }}.{{ "foo #{1 + 2} baz" }}
+
+
     {% trans %}
     Welcome %user_name%!
     {% endtrans %}
